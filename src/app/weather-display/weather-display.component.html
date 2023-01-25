@@ -1,0 +1,67 @@
+<div class="background {{backgroundClass}}"></div>
+<div class="weatherDisplayBody ">
+    <div class="CoordinatesOption">
+        <button (click)="getLocation(2)">Get weather for your coordinates</button>
+        <button (click)="showElement('inputForGeoCord')">Enter coordinates</button>
+    </div>
+    <div class="ErrorPopupParent" *ngIf="showElements.errorPopup" [ngClass]="{'entry': showElements.errorPopup}" ><div class="EroorPopup">In order to get weather for your current postion you need to give this site acces to your localization</div></div>
+    <div class="formContaier" *ngIf="showElements.inputForGeoCord" [ngClass]="{'entry': showElements.inputForGeoCord}"> 
+        <div>
+            <h2>Enter geographical coordinates</h2>
+            <form>
+                <p>lng: <input type="text" #lng></p>
+                <p>lat: <input type="text" #lat></p>
+                <button type="button" (click)="submitForm( lng ,lat )">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div *ngIf="weatherData && showWeather" [ngClass]="{'entry': showWeather}" >
+        <h3>Coordinates: {{weatherData.latitude}}, {{weatherData.longitude}}</h3>
+        <p><a href="https://www.google.pl/maps/place/{{weatherData.latitude}}N+{{weatherData.longitude}}E">Given geografical coordinates on map</a></p>
+        <div class="tiles">
+            <div>
+                <div>
+                    <h2 (click)="showElement('history')">Weather predictions</h2>
+                </div>
+                <div *ngIf="weatherData && showElements.history" class="weatherPredictions">
+                    <div *ngFor="let singleData of weatherData.hourly.temperature_2m;index as i ">
+                        <h3>Date: {{weatherData.hourly.time[i] | date:'medium' }}</h3>
+                        <div class="weatherRecord">
+                            <p>Temp: {{weatherData.hourly.temperature_2m[i]}}</p>
+                            <p>RH: {{weatherData.hourly.relativehumidity_2m[i]}}%</p>
+                            <p>WindSpeed: {{weatherData.hourly.windspeed_10m[i]}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <div><h2 (click)="showElement('current')">Current weather for your system time </h2></div>
+                </div>
+                <div *ngIf="!showElements.current" class="currentDay">
+                    <div class="currentDayContainer1">
+                        <h3>Date: {{weatherData.hourly.time[currentDay] | date:'medium' }}</h3>
+                        <div class="weatherRecord">
+                            <p>Temp: {{weatherData.hourly.temperature_2m[currentDay]}}</p>
+                            <p>RH: {{weatherData.hourly.relativehumidity_2m[currentDay]}}%</p>
+                            <p>WindSpeed: {{weatherData.hourly.windspeed_10m[currentDay]}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <div><h2 (click)="showElement('last')">Our furthest weather predictions</h2></div>
+                </div>
+                <div *ngIf="showElements.last">
+                    <h3>Date: {{weatherData.hourly.time[weatherData.hourly.time.length-1] | date:'medium'  }}</h3>
+                    <div class="weatherRecord">
+                        <p>Temp: {{weatherData.hourly.temperature_2m[weatherData.hourly.temperature_2m.length-1]}}</p>
+                        <p>RH: {{weatherData.hourly.relativehumidity_2m[weatherData.hourly.relativehumidity_2m.length-1]}}%</p>
+                        <p>WindSpeed: {{weatherData.hourly.windspeed_10m[weatherData.hourly.windspeed_10m.length-1]}}</p>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </div>
+</div>

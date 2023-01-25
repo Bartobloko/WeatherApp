@@ -1,0 +1,187 @@
+
+*{
+    color: white;
+}
+
+button, input {
+    background: #404040;
+    padding: .2rem .3rem;
+    border-radius: 6px;
+    border: 1px solid #333;
+}
+
+button {
+    padding: .4rem .6rem;
+    transition: .2s;
+}
+
+button:hover {
+    background: #ddd;
+    color: #000;
+    border: 1px solid #333;
+    transition: 0.7s;
+}
+
+.weatherDisplayBody {
+    text-align: center;
+}
+h2 {
+    font-size: 35px;
+    margin: 0;
+    padding: 20px;
+}
+.tiles {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: start
+}
+.CoordinatesOption {
+    button {
+        padding: 20px; 
+        margin: 15px 20px;
+    }
+  
+   
+}
+
+.formContaier {
+    display:grid;
+    place-items: center;
+    div {
+        width: 27vw;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 12px;
+        padding-bottom:20px ;
+        margin-top: 10px;
+    }
+}
+
+.weatherPredictions {
+    max-height: 45vh;
+    overflow-y: scroll;
+        /* width */
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+    
+    /* Track */
+    &::-webkit-scrollbar-track {
+        border-radius: 10px;
+    }
+    
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: white; 
+        border-radius: 10px;
+    }
+    
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: #ccc; 
+    }
+}
+.entry {
+    animation: showStart 1s;
+}
+@keyframes showStart {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.default {
+    background-image:url("../../assets/default.jpg");
+    transition: 1.5s;
+}
+.sunny {
+    background-image:url("../../assets/sunny.jpg");
+    transition: 1.5s;
+}
+.freezing {
+    background-image:url("../../assets/pexels-ruvim-miksanskiy-1438761.jpg");
+    transition: 1.5s;
+}
+.normal {
+    background-image:url("../../assets/pexels-tahir-shaw-186980.jpg");
+    transition: 1.5s;
+}
+.cold {
+    background-image:url("../../assets/cold.jpg");
+    transition: 1.5s;
+}
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    transform: scale(1.1);
+    z-index: -10;
+}
+.tiles {
+    >div{
+        background: rgba(255,255,255,.4);
+        border-radius: 12px;
+        margin: 50px;
+        padding-bottom: 30px;
+    }
+    h2, p, h3 {
+        color: #000 !important;
+    }
+    h2 {
+        cursor: pointer;
+        font-size: 30px;
+    }
+    h3 {
+        padding-left: 50px;
+        text-align: left;
+    }
+}
+
+
+body {
+    color:red;
+}
+
+html body {
+    color: orange;
+}
+.weatherRecord{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    border-radius: 6px;
+    background: white;
+    margin: 0px 50px ;
+   
+}
+
+
+
+
+
+.EroorPopup {
+	// layout
+	position: relative;
+    text-align: center;
+	max-width: 15em;
+    color: rgb(235, 69, 69);
+	// looks
+	background: rgba(250, 250, 250,.4);
+	padding: 0.5em 0.75em;
+	font-size: 1.25em;
+	border-radius: 1rem;
+    font-weight: 200;
+  box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+}
+.ErrorPopupParent {
+    display: grid;
+    justify-content: center;
+}
+
+
+
